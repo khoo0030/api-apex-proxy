@@ -1,0 +1,37 @@
+module.exports = {
+    'env': {
+        'browser': true,
+        'commonjs': true,
+        'es6': true,
+        'node': true,
+        'mocha': true,
+    },
+    'extends': 'eslint:recommended',
+    'globals': {
+        'Atomics': 'readonly',
+        'SharedArrayBuffer': 'readonly'
+    },
+    'parserOptions': {
+        'ecmaVersion': 2018
+    },
+    'rules': {
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'indent': [
+            'error',
+            2
+        ],
+        'linebreak-style': [
+            'error',
+            'unix'
+        ],
+        'quotes': [
+            'error',
+            'single'
+        ],
+        'semi': [
+            'error',
+            'never'
+        ]
+    }
+}

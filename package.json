@@ -1,0 +1,22 @@
+{
+  "name": "api-apex-proxy",
+  "version": "1.0.0",
+  "description": "Sample API APEX proxy",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon bin/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gerald Khoo",
+  "license": "ISC",
+  "dependencies": {
+    "http-proxy": "^1.17.0",
+    "node-apex-api-security": "^1.0.6",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/http-proxy": "^1.17.0",
+    "eslint": "^5.16.0",
+    "nodemon": "^1.19.1"
+  }
+}
