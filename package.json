@@ -11,11 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "http-proxy": "^1.17.0",
+    "lodash": "^4.17.11",
     "node-apex-api-security": "^1.0.6",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/http-proxy": "^1.17.0",
+    "@types/lodash": "^4.14.133",
     "eslint": "^5.16.0",
     "nodemon": "^1.19.1"
   }
