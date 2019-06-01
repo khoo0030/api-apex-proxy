@@ -1,6 +1,6 @@
 const { L1, L2, APEX_L1_EG, APEX_L2_EG, APEX_L1_IG, APEX_L2_IG } = require('../static/constants')
+const { doesKeyFileExists, getKeyFilePath} = require('./keyFileUtil')
 const config = require('../config/index')
-const path = require('path')
 
 module.exports = class apexSigningOptionsUtil {
   static getInternetOptions(method, urlPath) {
@@ -17,13 +17,12 @@ module.exports = class apexSigningOptionsUtil {
         urlPath: `${BASE_URL}${urlPath}`
       }
     } else if (POLICY === L2) {
+      const KEY_FILE = config.env('APEX_INTERNET_SIGNING_KEY_FILE_PATH', config.get('apex.internet.signing.keyFile'))
+      if (doesKeyFileExists(KEY_FILE) === false) throw new Error(`Cannot find APEX internet key file ${KEY_FILE}`)
+
       return {
         appId: APP_ID,
-        keyFile: path.resolve(
-          process.cwd(),
-          'static',
-          config.env('APEX_INTERNET_SIGNING_KEY_FILE_PATH', config.get('apex.internet.signing.keyFile'))
-        ),
+        keyFile: getKeyFilePath(KEY_FILE),
         authPrefix: APEX_L2_EG,
         httpMethod: method,
         urlPath: `${BASE_URL}${urlPath}`,
@@ -47,13 +46,12 @@ module.exports = class apexSigningOptionsUtil {
         urlPath: `${BASE_URL}${urlPath}`
       }
     } else if (POLICY === L2) {
+      const KEY_FILE = config.env('APEX_INTRANET_SIGNING_KEY_FILE_PATH', config.get('apex.intranet.signing.keyFile'))
+      if (doesKeyFileExists(KEY_FILE) === false) throw new Error(`Cannot find APEX intranet key file ${KEY_FILE}`)
+
       return {
         appId: APP_ID,
-        keyFile: path.resolve(
-          process.cwd(),
-          'static',
-          config.env('APEX_INTRANET_SIGNING_KEY_FILE_PATH', config.get('apex.intranet.signing.keyFile'))
-        ),
+        keyFile: getKeyFilePath(KEY_FILE),
         authPrefix: APEX_L2_IG,
         httpMethod: method,
         urlPath: `${BASE_URL}${urlPath}`,
