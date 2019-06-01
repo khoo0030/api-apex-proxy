@@ -1,6 +1,7 @@
-const { proxy, server } = require('./../app')
+const { proxy, server } = require('../app')
 const config = require('../config/index')
 const loggingService = require('../services/loggingService')
+const proxyUtil = require('../util/proxyUtil')
 
 const NODE_ENV = config.env('NODE_ENV', config.get('app.env', 'development'))
 let PORT
@@ -38,5 +39,5 @@ proxy.on('error', err => {
 
 proxy.on('proxyReq', (proxyReq, req, res, options) => {
   loggingService.info(`Proxy path: ${req.url}`)
-  // proxyReq.setHeader('Authorization', getAuthorizationHeader(req.method, req.url));
+  proxyUtil.setAuthorizationHeader(proxyReq, req, res, options)
 });
