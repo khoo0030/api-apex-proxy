@@ -21,11 +21,15 @@ module.exports = class proxyUtil {
     let header = []
 
     if (APEX_INTRANET_POLICY === L1 || APEX_INTRANET_POLICY === L2) {
-      header.push(apexApiSigningUtil.generateApexIntranetHeader(method, url))
+      const result = apexApiSigningUtil.generateApexIntranetHeader(method, url)
+      loggingService.debug(result)
+      header.push(result)
     }
 
     if (APEX_INTERNET_POLICY === L1 || APEX_INTERNET_POLICY === L2) {
-      header.push(apexApiSigningUtil.generateApexInternetHeader(method, url))
+      const result = apexApiSigningUtil.generateApexInternetHeader(method, url)
+      loggingService.debug(result)
+      header.push(result)
     }
 
     return _.join(header, ', ')
