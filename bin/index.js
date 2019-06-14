@@ -11,6 +11,20 @@ server.listen(PORT)
 
 server.on('listening', function () {
   loggingService.info(`Listening on Port: ${PORT}; Target: ${config.env('TARGET', config.get('proxy.target'))}`)
+  loggingService.debug(`NODE_ENV: ${process.env.NODE_ENV}`)
+  loggingService.debug(`PORT: ${process.env.PORT}`)
+  loggingService.debug(`LOGGING_LEVEL: ${process.env.LOGGING_LEVEL}`)
+  loggingService.debug(`TARGET: ${process.env.TARGET}`)
+  loggingService.debug(`APEX_INTERNET_POLICY: ${process.env.APEX_INTERNET_POLICY}`)
+  loggingService.debug(`APEX_INTERNET_BASE_URL: ${process.env.APEX_INTERNET_BASE_URL}`)
+  loggingService.debug(`APEX_INTERNET_SIGNING_APP_ID: ${process.env.APEX_INTERNET_SIGNING_APP_ID}`)
+  loggingService.debug(`APEX_INTERNET_SIGNING_APP_SECRET: ${process.env.APEX_INTERNET_SIGNING_APP_SECRET}`)
+  loggingService.debug(`APEX_INTERNET_SIGNING_KEY_FILE_PATH: ${process.env.APEX_INTERNET_SIGNING_KEY_FILE_PATH}`)
+  loggingService.debug(`APEX_INTRANET_POLICY: ${process.env.APEX_INTRANET_POLICY}`)
+  loggingService.debug(`APEX_INTRANET_BASE_URL: ${process.env.APEX_INTRANET_BASE_URL}`)
+  loggingService.debug(`APEX_INTRANET_SIGNING_APP_ID: ${process.env.APEX_INTRANET_SIGNING_APP_ID}`)
+  loggingService.debug(`APEX_INTRANET_SIGNING_APP_SECRET: ${process.env.APEX_INTRANET_SIGNING_APP_SECRET}`)
+  loggingService.debug(`APEX_INTRANET_SIGNING_KEY_FILE_PATH: ${process.env.APEX_INTRANET_SIGNING_KEY_FILE_PATH}`)
 })
 
 server.on('error', function (err) {
