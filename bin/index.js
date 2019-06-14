@@ -40,4 +40,4 @@ proxy.on('error', err => {
 proxy.on('proxyReq', (proxyReq, req, res, options) => {
   loggingService.info(`Proxy path: ${req.url}`)
   proxyUtil.setAuthorizationHeader(proxyReq, req, res, options)
-});
+})

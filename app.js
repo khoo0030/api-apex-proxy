@@ -7,11 +7,11 @@ const options = {
   changeOrigin: config.env('TARGET', config.get('proxy.changeOrigin')),
 }
 
-const proxy = httpProxy.createProxyServer(options);
+const proxy = httpProxy.createProxyServer(options)
 
 const server = http.createServer((req, res) => {
-  proxy.web(req, res, {});
-});
+  proxy.web(req, res, {})
+})
 
 module.exports.proxy = proxy
 module.exports.server = server
