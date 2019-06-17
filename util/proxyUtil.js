@@ -10,7 +10,7 @@ const APEX_INTRANET_POLICY = config.env('APEX_INTRANET_POLICY', config.get('apex
 module.exports = class proxyUtil {
   // eslint-disable-next-line no-unused-vars
   static setAuthorizationHeader(proxyReq, req, res, options) {
-    loggingService.info(`APEX internet policy: ${APEX_INTERNET_POLICY}; APEX intranet policy: ${APEX_INTRANET_POLICY}`)
+    loggingService.debug(`APEX internet policy: ${APEX_INTERNET_POLICY}; APEX intranet policy: ${APEX_INTRANET_POLICY}`)
 
     if (APEX_INTERNET_POLICY === L0 && APEX_INTRANET_POLICY === L0) return this
 
