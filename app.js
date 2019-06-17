@@ -1,6 +1,8 @@
 const config = require('./config/index')
 const http = require('http')
 const httpProxy = require('http-proxy')
+const morgan = require('morgan')
+const loggingService = require('./services/loggingService')
 
 const options = {
   target: config.env('TARGET', config.get('proxy.target')),
@@ -9,8 +11,12 @@ const options = {
 
 const proxy = httpProxy.createProxyServer(options)
 
+const requestLogger = morgan('combined', { stream: loggingService.stream })
+
 const server = http.createServer((req, res) => {
-  proxy.web(req, res, {})
+  requestLogger(req, res, () => {
+    proxy.web(req, res, {})
+  })
 })
 
 module.exports.proxy = proxy
