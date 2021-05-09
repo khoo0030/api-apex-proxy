@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "http-proxy": "^1.17.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "morgan": "^1.9.1",
     "node-apex-api-security": "^1.0.6",
     "winston": "^3.2.1"
